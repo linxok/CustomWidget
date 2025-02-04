@@ -1,4 +1,4 @@
-Widget for Magento. 
+Widget for Magento 2.4.7 tested.
 
 Displays products that have been updated or added. 
 
