@@ -1,0 +1,54 @@
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="new_product_widget" class="MyCompany\CustomWidget\Block\Product\Widget\NewWidget2">
+        <label translate="true">Catalog New Products List</label>
+        <description translate="true">List of Products that are set as New</description>
+        <parameters>
+            <parameter name="display_type" xsi:type="select" required="true" visible="true">
+                <label translate="true">Display Type</label>
+                <description translate="true" >All products - recently added products, New products - products marked as new
+                </description>
+                <options>
+                    <option name="default" value="all_products" selected="true">
+                        <label translate="true">All products</label>
+                    </option>
+                    <option name="item" value="new_products">
+                        <label translate="true">New products</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="show_pager" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Display Page Control</label>
+            </parameter>
+            <parameter name="products_per_page" xsi:type="text" required="true" visible="true">
+                <label translate="true">Number of Products per Page</label>
+                <depends>
+                    <parameter name="show_pager" value="1"/>
+                </depends>
+                <value>5</value>
+            </parameter>
+            <parameter name="products_count" xsi:type="text" required="true" visible="true">
+                <label translate="true">Number of Products to Display</label>
+                <value>10</value>
+            </parameter>
+            <parameter name="template" xsi:type="select" required="true" visible="true">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="default" value="MyCompany_CustomWidget::product/widget/new/content/new_grid.phtml" selected="true">
+                        <label translate="true">New Products Grid Template</label>
+                    </option>
+
+                </options>
+            </parameter>
+            <parameter name="cache_lifetime" xsi:type="text" visible="true">
+                <label translate="true">Cache Lifetime (Seconds)</label>
+                <description translate="true">
+                    <![CDATA[Time in seconds between the widget updates.
+                    <br/>If not set, equals to 86400 seconds (24 hours). To update widget instantly, go to Cache Management and clear Blocks HTML Output cache.
+                    <br/>Widget will not show products that begin to match the specified conditions until cache is refreshed.]]>
+                </description>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>
